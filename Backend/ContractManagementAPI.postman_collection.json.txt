@@ -1,0 +1,197 @@
+{
+  "info": {
+    "name": "Contract Management API",
+    "_postman_id": "7f11f3e4-8d88-4b73-b91c-9a88e45931f1",
+    "description": "Postman collection for the Contract Management Backend (Spring Boot + Ollama AI)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/users"
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/users/1"
+          }
+        },
+        {
+          "name": "Get User by Username",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/users/username/legal"
+          }
+        },
+        {
+          "name": "Add New User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"manager\",\n  \"email\": \"manager@company.com\",\n  \"password\": \"secure123\",\n  \"role\": \"EMPLOYEE\",\n  \"fullName\": \"Jane Manager\",\n  \"department\": \"Operations\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/users"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contract Requests",
+      "item": [
+        {
+          "name": "Create Contract Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"NDA with Vendor X\",\n  \"contractType\": \"NDA\",\n  \"description\": \"Confidentiality agreement for vendor collaboration\",\n  \"priority\": \"HIGH\",\n  \"dueDate\": \"2025-12-30\",\n  \"tags\": [\"nda\", \"vendor\"]\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/requests"
+          }
+        },
+        {
+          "name": "Get My Requests",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/requests/my-requests"
+          }
+        },
+        {
+          "name": "Get Pending Requests",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/requests/pending"
+          }
+        },
+        {
+          "name": "Assign Request",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/requests/1/assign"
+          }
+        },
+        {
+          "name": "Update Request Status",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/requests/1/status?status=COMPLETED"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contracts (AI)",
+      "item": [
+        {
+          "name": "Generate Contract Draft",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contractType\": \"NDA\",\n  \"partyA\": \"Company A\",\n  \"partyB\": \"Company B\",\n  \"prompt\": \"Include clauses about data protection and confidentiality.\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/contracts/draft"
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/contracts/health"
+          }
+        },
+        {
+          "name": "Supported Contract Types",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/contracts/types"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Templates",
+      "item": [
+        {
+          "name": "Create Template",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Standard NDA Template\",\n  \"contractType\": \"NDA\",\n  \"description\": \"Basic confidentiality template.\",\n  \"content\": \"{ \\\"sections\\\": [ { \\\"title\\\": \\\"Confidential Info\\\", \\\"content\\\": \\\"...\\\" } ] }\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/templates"
+          }
+        },
+        {
+          "name": "Get All Templates",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/templates"
+          }
+        },
+        {
+          "name": "Get Template by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/templates/1"
+          }
+        },
+        {
+          "name": "Update Template",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Standard NDA Template - Updated\",\n  \"contractType\": \"NDA\",\n  \"description\": \"Revised for 2025 compliance\",\n  \"content\": \"{ 'updated': true }\"\n}"
+            },
+            "url": "{{baseUrl}}/api/v1/templates/1"
+          }
+        },
+        {
+          "name": "Delete Template",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/templates/1"
+          }
+        },
+        {
+          "name": "Increment Template Usage",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/templates/1/use"
+          }
+        }
+      ]
+    }
+  ]
+}

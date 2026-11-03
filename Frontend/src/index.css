@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ContractsHereAI Design System - Professional Contract Management Interface */
+
+@layer base {
+  :root {
+    --background: 230 33% 21%;
+    --foreground: 0 0% 100%;
+    --card: 230 28% 25%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 28% 25%;
+    --primary: 351 60% 83%;
+    --primary-foreground: 230 33% 21%;
+    --secondary: 231 48% 89%;
+    --secondary-foreground: 230 33% 21%;
+    --muted: 230 40% 14%;
+    --muted-foreground: 231 54% 82%;
+    --accent: 230 28% 25%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 86% 97%;
+    --border: 230 27% 27%;
+    --input: 230 33% 21%;
+    --ring: 351 60% 83%;
+    --radius: 0.750rem;
+    
+    /* Chart colors for analytics */
+    --chart-1: 173 58% 39%;
+    --chart-2: 12 76% 61%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    
+    /* Professional sidebar colors */
+    --sidebar-background: 230 35% 18%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 351 60% 83%;
+    --sidebar-primary-foreground: 230 33% 21%;
+    --sidebar-accent: 230 28% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 230 27% 27%;
+    --sidebar-ring: 351 60% 83%;
+    
+    /* Typography */
+    --font-onest: "Onest", sans-serif;
+    
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card) / 0.95));
+    --gradient-accent: linear-gradient(120deg, hsl(var(--accent)), hsl(var(--muted)));
+    
+    /* Professional shadows */
+    --shadow-soft: 0 4px 20px hsl(var(--background) / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.2);
+    --shadow-primary: 0 4px 20px hsl(var(--primary) / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-onest), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+}
+
+@keyframes patternMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 140px 16px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@layer components {
+  .pattern-background {
+    background-image: url("data:image/svg+xml,%3Csvg width='140' height='16' viewBox='0 0 140 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4133_10133)'%3E%3Cpath d='M-0.0390625 44C16.7069 44 23.8369 34.61 32.6009 24.676C41.5709 14.516 51.4569 4 70.0009 4C88.5449 4 98.4309 14.516 107.401 24.676C116.165 34.61 123.295 44 140.041 44M-0.0390625 28.004C16.7069 28 23.8369 18.612 32.6009 8.678C41.5709 -1.484 51.4569 -12 70.0009 -12C88.5449 -12 98.4309 -1.484 107.401 8.678C116.165 18.612 123.295 28 140.041 28.006M140.001 12.008C123.255 12.006 116.165 2.612 107.401 -7.322C98.4309 -17.484 88.5449 -28 70.0009 -28C51.4569 -28 41.5709 -17.484 32.6009 -7.322C23.8369 2.612 16.7069 12 -0.0390625 12.004' stroke-opacity='0.05' stroke='%23ffffff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4133_10133'%3E%3Crect width='140' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    background-repeat: repeat;
+    animation: patternMove 3s linear infinite;
+  }
+  
+  .card-professional {
+    @apply bg-card border border-border rounded-xl shadow-[var(--shadow-card)] backdrop-blur-sm;
+    background: var(--gradient-card);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-primary)];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

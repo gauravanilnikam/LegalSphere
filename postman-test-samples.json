@@ -1,0 +1,63 @@
+{
+  "contract_draft_api_samples": {
+    "description": "Sample request bodies for testing the Contract Draft API",
+    "base_url": "http://localhost:3001",
+    "endpoint": "/api/v1/contracts/draft",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "samples": [
+      {
+        "name": "Basic NDA Contract",
+        "description": "Simple NDA between two companies",
+        "request_body": {
+          "contractType": "NDA",
+          "partyA": "Tech Innovations Inc.",
+          "partyB": "Digital Solutions LLC",
+          "prompt": "Create a mutual non-disclosure agreement for sharing confidential information about a potential software development partnership. The agreement should include standard confidentiality clauses, a 2-year term, and provisions for return of confidential materials."
+        }
+      },
+      {
+        "name": "Employment NDA",
+        "description": "NDA for employee onboarding",
+        "request_body": {
+          "contractType": "NDA",
+          "partyA": "ABC Corporation",
+          "partyB": "John Smith",
+          "prompt": "Generate an employee non-disclosure agreement for a software engineer position. Include clauses about protecting company trade secrets, customer information, and proprietary technology. The agreement should remain in effect during employment and for 3 years after termination."
+        }
+      },
+      {
+        "name": "Vendor NDA",
+        "description": "NDA with external vendor",
+        "request_body": {
+          "contractType": "NDA",
+          "partyA": "Manufacturing Corp",
+          "partyB": "Consulting Services Ltd",
+          "prompt": "Create a one-way NDA where Manufacturing Corp will share sensitive production data and processes with Consulting Services Ltd for a process optimization project. Include specific definitions of confidential information and remedies for breach."
+        }
+      },
+      {
+        "name": "Detailed Business NDA",
+        "description": "Comprehensive NDA for business negotiations",
+        "request_body": {
+          "contractType": "NDA",
+          "partyA": "StartupX Inc.",
+          "partyB": "InvestorY Partners",
+          "prompt": "Draft a comprehensive mutual NDA for due diligence discussions regarding a potential acquisition. Include provisions for financial information, business plans, customer lists, and intellectual property. Add clauses about permitted disclosures to advisors and legal obligations for return of materials."
+        }
+      }
+    ]
+  },
+  "health_check": {
+    "description": "Health check endpoint",
+    "url": "http://localhost:3001/api/v1/contracts/health",
+    "method": "GET"
+  },
+  "contract_types": {
+    "description": "Get supported contract types",
+    "url": "http://localhost:3001/api/v1/contracts/types",
+    "method": "GET"
+  }
+}
